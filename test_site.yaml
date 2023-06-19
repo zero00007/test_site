@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test_site
+  name: test-site
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test_site
+      app: test-site
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       labels:
-        app: test_site
+        app: test-site
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
@@ -33,7 +33,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: test_site
+  name: test-site
 spec:
   type: LoadBalancer
   ports:
