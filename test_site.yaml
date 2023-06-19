@@ -21,7 +21,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: test_site
-        image: azuredocs/test_site
+        image: contreg0007.azurecr.io/azuredocs/test_site
         ports:
         - containerPort: 5000
         resources:
