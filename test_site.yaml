@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test_site
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test_site
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
+  template:
+    metadata:
+      labels:
+        app: test_site
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: test_site
+        image: mcr.microsoft.com/azuredocs/test_site:v1
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test_site
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    app: test_site
