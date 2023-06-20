@@ -16,12 +16,9 @@ spec:
     metadata:
       labels:
         app: test-site
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
       containers:
-      - name: test_site
-        image: contreg0007.azurecr.io/azuredocs/test_site
+      - name: test-site
+        image: contreg0007.azurecr.io/test_site
         ports:
         - containerPort: 5000
         resources:
@@ -39,4 +36,4 @@ spec:
   ports:
   - port: 5000
   selector:
-    app: test_site
+    app: test-site
