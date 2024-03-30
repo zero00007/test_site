@@ -18,7 +18,7 @@ spec:
         app: test-site
       containers:
       - name: test-site
-        image: contreg0007.azurecr.io/test_site
+        image: test-site
         ports:
         - containerPort: 5000
         resources:
